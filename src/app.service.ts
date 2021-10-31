@@ -20,4 +20,16 @@ export class AppService {
     return save;
 
   }
+  async  deletePosttData(id){
+    const deletedData = await this.postrepo.findByIdAndDelete(id);
+    console.log(id,deletedData)
+    return deletedData;
+  }
+  async  updatePosttData(post){
+    let id=post._id;
+    delete post._id;
+    const data = await this.postrepo.findByIdAndUpdate(id,post);
+    console.log(post,data)
+    return data;
+  }
 }
